@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #f8dede;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  h1 {
+    color: #c0392b;
+    margin-bottom: 15px;
+  }
+
+  img {
+    width: 250px;
+    margin: 20px 0;
+  }
+
+  button {
+    padding: 10px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.2s ease;
+  }
+
+  .yes-button {
+    background: #2ecc71;
+    color: white;
+  }
+
+  .no-button {
+    background: #e74c3c;
+    color: white;
+  }
+
+  .footer {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
+  }
+</style>
+</head>
+
+<body>
+
+<h1 id="title">Will you be my Valentine?</h1>
+
+<img id="gif" src="https://i.pinimg.com/originals/83/8b/a9/838ba9cee3c90d7fdbb307196163ba1b.gif" alt="gif">
+
+<div id="buttons">
+  <button class="yes-button" onclick="handleYesClick()">Yes</button>
+  <button class="no-button" onclick="handleNoClick()">No</button>
+</div>
+
+<div class="footer">
+  Crafted by YU-GI
+</div>
+
+<script>
+  const messages = [
+    "Are you sure? 🥺",
+    "Really sure?? 😟",
+    "Think about it again...",
+    "That hurts a little 💔",
+    "Please don't say no 😢",
+    "I’ll be very sad 😭",
+    "You’re breaking my heart 💔💔",
+    "Last chance… please 😟",
+    "Okay now you're just being mean 😔",
+    "Just say YES already 😩❤️"
+  ];
+
+  let messageIndex = 0;
+
+  function handleNoClick() {
+    const noButton = document.querySelector(".no-button");
+    const yesButton = document.querySelector(".yes-button");
+    const gif = document.getElementById("gif");
+
+    gif.src = "https://i.pinimg.com/originals/83/8b/a9/838ba9cee3c90d7fdbb307196163ba1b.gif";
+
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
+
+    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    const newSize = currentSize * 2;
+    yesButton.style.fontSize = newSize + "px";
+  }
+
+  function handleYesClick() {
+    document.getElementById("title").textContent = "Knew you would say yes!";
+    document.getElementById("gif").src = "https://i.pinimg.com/originals/98/68/f5/9868f557c0c3049734ea8164d38b67c9.gif";
+    document.getElementById("buttons").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
